@@ -19,8 +19,32 @@ header {
   background-color: var(--color-primary);
   color: var(--color-secondary);
   text-align: center;
-  padding: 1rem 2rem 2rem 140px; /* Adjusted left padding for logo */
-  position: relative; /* Needed for absolute positioning of logo inside */
+  padding: 2rem 2rem 2rem 140px; /* Adjusted left padding for logo */
+  position: relative; /* Ensure absolute positioning of children works */
+  min-height: 120px; /* Ensure header is tall enough for logo */
+  display: flex; /* Use flexbox for better alignment of header content */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-placeholder {
+  position: absolute; /* Position relative to the header */
+  top: 10px; /* Adjust top position within the header */
+  left: 20px;
+  width: 100px;
+  height: 100px;
+  background-color: var(--color-secondary);
+  border: 2px solid var(--color-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: var(--color-primary);
+  z-index: 100;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.8em;
 }
 
 .container {
