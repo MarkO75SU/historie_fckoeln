@@ -19,7 +19,8 @@ header {
   background-color: var(--color-primary);
   color: var(--color-secondary);
   text-align: center;
-  padding: 2rem;
+  padding: 1rem 2rem 2rem 140px; /* Adjusted left padding for logo */
+  position: relative; /* Needed for absolute positioning of logo inside */
 }
 
 .container {
@@ -263,7 +264,7 @@ label { display:block; margin-bottom:0.5rem; }
 
 /* FC-Logo Placeholder Styling */
 .logo-placeholder {
-  position: fixed;
+  position: absolute; /* Position relative to the header */
   top: 20px;
   left: 20px;
   width: 100px; /* Adjust as needed */
