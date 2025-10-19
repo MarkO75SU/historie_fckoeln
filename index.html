@@ -29,51 +29,26 @@
 
 <form id="reportForm">
   <h3>Fehlendes Ereignis melden</h3>
-  <label for="reportDate">Datum (TT.MM.JJJJ):</label>
-  <input type="text" id="reportDate" placeholder="z.B. 13.02.1948" required>
-
-  <label for="reportTitle">Titel:</label>
-  <input type="text" id="reportTitle" placeholder="Titel des Ereignisses" required>
-
-  <label for="reportDescription">Beschreibung:</label>
-  <textarea id="reportDescription" placeholder="Detaillierte Beschreibung des Ereignisses" required></textarea>
-
-  <label for="reportType">Typ des Ereignisses:</label>
-  <select id="reportType" required>
-    <option value="">Bitte auswählen</option>
-    <option value="info">Info</option>
-    <option value="erfolg">Erfolg</option>
-    <option value="skandal">Skandal</option>
-  </select>
-
-  <label for="reportRank">Platzierung (optional):</label>
-  <input type="text" id="reportRank" placeholder="z.B. 1. Platz, 17. Platz">
-
-  <label for="reportLeague">Liga/Wettbewerb (optional):</label>
-  <input type="text" id="reportLeague" placeholder="z.B. Bundesliga, DFB-Pokalfinale">
-
-  <label for="reportExtra">Zusätzliche Infos (optional):</label>
-  <textarea id="reportExtra" placeholder="Weitere interessante Fakten oder Details"></textarea>
-
-  <label for="reportImageUrl">Bild-URL (optional):</label>
-  <input type="url" id="reportImageUrl" placeholder="URL zu einem Bild (z.B. https://example.com/bild.jpg)">
-
-  <label for="reportSourceUrl">Quellen-URL (optional):</label>
-  <input type="url" id="reportSourceUrl" placeholder="URL zu einer Quelle (z.B. https://example.com/artikel)">
-  
-  <label>
-    <input type="checkbox" id="reportRights" required>
-    Ich bestätige, dass die gemeldeten Informationen korrekt sind und keine Rechte Dritter verletzen.
-  </label>
-  
-  <button type="submit">Ereignis melden</button>
+  <p>Du hast ein fehlendes Ereignis entdeckt oder möchtest eine Korrektur vorschlagen?</p>
+  <p>Sende uns eine E-Mail an: <a href="mailto:historie_fckoeln@web.de">historie_fckoeln@web.de</a></p>
   <p id="reportMessage" style="color:green;"></p>
+
+  <div style="margin-top: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; font-size: 0.85em;">
+    <h4>Datenschutzhinweis:</h4>
+    <p>Eingehende E-Mails werden ausschließlich zur Kommunikation bezüglich fehlender Ereignisse oder Korrekturvorschläge verwendet. Deine E-Mail-Adresse und die E-Mail selbst werden gelöscht, sobald das Ereignis implementiert oder die Korrektur vorgenommen wurde.</p>
+    <p>Deine E-Mail-Adresse wird niemals für Newsletter, kommerzielle Aktivitäten oder an Dritte weitergegeben oder verkauft.</p>
+  </div>
 </form>
 
 <script src="script.js"></script>
 
 <footer style="text-align: center; padding: 20px; margin-top: 50px; background-color: #f0f0f0; color: #555; font-size: 0.9em;">
   <p>Dies ist ein nicht-kommerzielles, privates Community-Projekt.</p>
+  <p><strong>Impressum:</strong></p>
+  <p>Markus Otterbein</p>
+  <p>E-Mail: <a href="mailto:historie_fckoeln@web.de">historie_fckoeln@web.de</a></p>
+  <p>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV: Markus Otterbein</p>
+  <p>Haftungsausschluss: Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden.</p>
   <p>Für Fragen oder Anregungen, siehe den <a href="https://github.com/MarkO75SU/historie_fckoeln/blob/main/README.md" target="_blank">README</a> und <a href="https://github.com/MarkO75SU/historie_fckoeln/blob/main/CONTRIBUTING.md" target="_blank">CONTRIBUTING</a> auf GitHub.</p>
 </footer>
 </body>

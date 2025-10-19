@@ -155,66 +155,17 @@ function initEventListeners() {
     });
     
     // Report-Formular
-    reportForm.addEventListener('submit', async (e) => {
+    reportForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        const reportDate = document.getElementById('reportDate').value;
-        const reportTitle = document.getElementById('reportTitle').value;
-        const reportDescription = document.getElementById('reportDescription').value;
-        const reportType = document.getElementById('reportType').value;
-        const reportRank = document.getElementById('reportRank').value;
-        const reportLeague = document.getElementById('reportLeague').value;
-        const reportExtra = document.getElementById('reportExtra').value;
-        const reportImageUrl = document.getElementById('reportImageUrl').value;
-        const reportSourceUrl = document.getElementById('reportSourceUrl').value;
-        const reportRights = document.getElementById('reportRights').checked;
-
-        if (!reportRights) {
-            reportMessage.style.color = 'red';
-            reportMessage.textContent = 'Bitte bestätigen Sie die Richtigkeit der Informationen.';
-            return;
-        }
-
-        const submissionData = {
-            date: reportDate,
-            title: reportTitle,
-            description: reportDescription,
-            type: reportType,
-            rank: reportRank || null, // Use null if empty
-            league: reportLeague || null, // Use null if empty
-            extra: reportExtra || null, // Use null if empty
-            imageUrl: reportImageUrl || null, // Use null if empty
-            sourceUrl: reportSourceUrl || null, // Use null if empty
-            // rightsConfirmed: reportRights // Not strictly needed in the JSON sent to Mailjet, but good for internal tracking
-        };
-
-        reportMessage.style.color = 'orange';
-        reportMessage.textContent = 'Sende Ereignis...';
-
-        try {
-            // Replace '/api/submit-event' with your actual serverless function endpoint
-            const response = await fetch('/api/submit-event', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(submissionData),
-            });
-
-            if (response.ok) {
-                reportMessage.style.color = 'green';
-                reportMessage.textContent = 'Vielen Dank! Ihr Ereignis wurde erfolgreich gemeldet.';
-                reportForm.reset();
-            } else {
-                const errorData = await response.json();
-                reportMessage.style.color = 'red';
-                reportMessage.textContent = `Fehler beim Melden des Ereignisses: ${errorData.message || response.statusText}`;
-            }
-        } catch (error) {
-            reportMessage.style.color = 'red';
-            reportMessage.textContent = `Ein unerwarteter Fehler ist aufgetreten: ${error.message}`;
-            console.error('Error submitting event:', error);
-        }
+        // Since the form now directs users to send an email,
+        // this listener will just provide a confirmation message.
+        reportMessage.textContent = `Vielen Dank für deine Meldung! Bitte sende die Details an historie_fckoeln@web.de.`;
+        reportForm.reset();
+        
+        setTimeout(() => {
+            reportMessage.textContent = '';
+        }, 5000);
     });
 }
 
