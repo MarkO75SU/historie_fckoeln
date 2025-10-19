@@ -29,19 +29,44 @@
 
 <form id="reportForm">
   <h3>Fehlendes Ereignis melden</h3>
-  <input type="text" id="reportYear" placeholder="Datum (z.B. 13.02.1948)" required>
-  <input type="text" id="reportTitle" placeholder="Titel" required>
-  <textarea id="reportDescription" placeholder="Beschreibung" required></textarea>
-  
-  <label for="reportFile">Datei hochladen (optional)</label>
-  <input type="file" id="reportFile" accept=".jpg,.png,.pdf,.jpeg,.txt,.doc,.docx">
+  <label for="reportDate">Datum (TT.MM.JJJJ):</label>
+  <input type="text" id="reportDate" placeholder="z.B. 13.02.1948" required>
+
+  <label for="reportTitle">Titel:</label>
+  <input type="text" id="reportTitle" placeholder="Titel des Ereignisses" required>
+
+  <label for="reportDescription">Beschreibung:</label>
+  <textarea id="reportDescription" placeholder="Detaillierte Beschreibung des Ereignisses" required></textarea>
+
+  <label for="reportType">Typ des Ereignisses:</label>
+  <select id="reportType" required>
+    <option value="">Bitte auswählen</option>
+    <option value="info">Info</option>
+    <option value="erfolg">Erfolg</option>
+    <option value="skandal">Skandal</option>
+  </select>
+
+  <label for="reportRank">Platzierung (optional):</label>
+  <input type="text" id="reportRank" placeholder="z.B. 1. Platz, 17. Platz">
+
+  <label for="reportLeague">Liga/Wettbewerb (optional):</label>
+  <input type="text" id="reportLeague" placeholder="z.B. Bundesliga, DFB-Pokalfinale">
+
+  <label for="reportExtra">Zusätzliche Infos (optional):</label>
+  <textarea id="reportExtra" placeholder="Weitere interessante Fakten oder Details"></textarea>
+
+  <label for="reportImageUrl">Bild-URL (optional):</label>
+  <input type="url" id="reportImageUrl" placeholder="URL zu einem Bild (z.B. https://example.com/bild.jpg)">
+
+  <label for="reportSourceUrl">Quellen-URL (optional):</label>
+  <input type="url" id="reportSourceUrl" placeholder="URL zu einer Quelle (z.B. https://example.com/artikel)">
   
   <label>
     <input type="checkbox" id="reportRights" required>
-    Ich bestätige, dass die Datei frei von Rechten Dritter ist und unentgeltlich zur Verfügung gestellt wird.
+    Ich bestätige, dass die gemeldeten Informationen korrekt sind und keine Rechte Dritter verletzen.
   </label>
   
-  <button type="submit">Melden</button>
+  <button type="submit">Ereignis melden</button>
   <p id="reportMessage" style="color:green;"></p>
 </form>
 
