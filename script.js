@@ -69,12 +69,16 @@ function renderTimeline(filterTerm = '') {
     const yearTitle = document.createElement('div');
     yearTitle.classList.add('year-title');
     yearTitle.textContent = year;
-    
+    yearTitle.setAttribute('role', 'button'); // Make it semantically a button
+    yearTitle.setAttribute('aria-expanded', 'true'); // Initially expanded
+    yearTitle.setAttribute('aria-controls', `year-content-${year}`); // Link to content
+
     yearGroupDiv.appendChild(yearTitle);
 
     // Jahr-Content (Der aufklappbare Bereich)
     const yearContent = document.createElement('div');
     yearContent.classList.add('year-content');
+    yearContent.setAttribute('id', `year-content-${year}`); // Unique ID for accessibility
     
     // 5. Events rendern
     eventsByYear[year].forEach(event => {
@@ -119,8 +123,9 @@ function renderTimeline(filterTerm = '') {
     
     // Toggle-Funktionalität für Jahr-Gruppen
     yearTitle.addEventListener('click', () => {
-        yearContent.classList.toggle('closed');
+        const isClosed = yearContent.classList.toggle('closed');
         yearTitle.classList.toggle('closed');
+        yearTitle.setAttribute('aria-expanded', !isClosed); // Toggle aria-expanded
     });
   }
 }
