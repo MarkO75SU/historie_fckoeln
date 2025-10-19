@@ -323,19 +323,31 @@ header p {
 #reportForm p { margin-bottom: 1rem; } /* Added margin for paragraphs */
 #reportForm a { color: var(--color-primary); font-weight: bold; }
 
-/* --- Footer --- */
-footer {
-    margin-top: 4rem !important; /* More space above footer */
-    padding: 30px 20px !important; /* More padding */
-    background-color: #e9e9e9 !important; /* Slightly darker background */
-    border-top: 1px solid var(--color-border-light);
+.datenschutzhinweis-box {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  font-size: 0.85em;
 }
 
-footer p {
+/* --- Footer --- */
+.main-footer { /* Changed from footer to .main-footer */
+    margin-top: 4rem;
+    padding: 30px 20px;
+    background-color: #e9e9e9;
+    border-top: 1px solid var(--color-border-light);
+    text-align: center;
+    color: #555;
+    font-size: 0.9em;
+}
+
+.main-footer p {
     margin-bottom: 0.5rem;
 }
 
-footer a {
+.main-footer a {
     color: var(--color-primary);
     font-weight: normal;
 }
