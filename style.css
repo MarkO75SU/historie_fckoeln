@@ -1,3 +1,4 @@
+/* MIT License - Copyright (c) 2025 Your Name or Organization - See LICENSE for details. */
 :root {
   --color-primary: #E30613; /* FC Köln Rot */
   --color-secondary: #FFFFFF; /* FC Köln Weiß */
@@ -258,4 +259,24 @@ label { display:block; margin-bottom:0.5rem; }
 
 .contribution-hint a:hover {
   color: #f0f0f0;
+}
+
+/* FC-Logo Placeholder Styling */
+.logo-placeholder {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 100px; /* Adjust as needed */
+  height: 100px; /* Adjust as needed */
+  background-color: var(--color-secondary); /* White background */
+  border: 2px solid var(--color-primary); /* FC Red border */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: var(--color-primary);
+  z-index: 100;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.8em;
 }
