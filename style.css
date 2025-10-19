@@ -1,4 +1,6 @@
 /* MIT License - Copyright (c) 2025 Your Name or Organization - See LICENSE for details. */
+
+/* --- Variables --- */
 :root {
   --color-primary: #E30613; /* FC Köln Rot */
   --color-secondary: #FFFFFF; /* FC Köln Weiß */
@@ -6,15 +8,28 @@
   --color-text: #333333;
   --color-text-light: #FFFFFF;
   --color-background: #F9F9F9;
+  --color-border-light: #e0e0e0;
 }
 
+/* --- Base Styles --- */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   background-color: var(--color-background);
   margin: 0;
   color: var(--color-text);
+  line-height: 1.6;
 }
 
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* --- Header --- */
 header {
   background-color: var(--color-primary);
   color: var(--color-secondary);
@@ -22,12 +37,30 @@ header {
   padding: 2rem 2rem 2rem 140px; /* Adjusted left padding for logo */
   position: relative; /* Ensure absolute positioning of children works */
   min-height: 120px; /* Ensure header is tall enough for logo */
-  display: flex; /* Use flexbox for better alignment of header content */
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+header p {
+  margin: 0.5rem 0 0;
+  font-size: 1.1rem;
+}
+
+.disclaimer {
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  opacity: 0.8;
+}
+
+/* --- Logo Placeholder --- */
 .logo-placeholder {
   position: absolute; /* Position relative to the header */
   top: 10px; /* Adjust top position within the header */
@@ -45,8 +78,40 @@ header {
   border-radius: 8px;
   text-align: center;
   font-size: 0.8em;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+/* --- Contribution Hint Box --- */
+.contribution-hint {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 1000; /* Higher z-index to ensure visibility */
+  text-align: center;
+  font-size: 0.9em;
+}
+
+.contribution-hint p {
+  margin: 0 0 5px 0;
+  font-weight: bold;
+}
+
+.contribution-hint a {
+  color: var(--color-secondary);
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.contribution-hint a:hover {
+  color: #f0f0f0;
+}
+
+/* --- Main Container --- */
 .container {
   display: flex;
   max-width: 900px;
@@ -54,7 +119,7 @@ header {
   padding: 0 1rem;
 }
 
-/* --- Such- und Filterbereich --- */
+/* --- Search and Filter Area --- */
 .controls {
     max-width: 900px;
     margin: 0 auto 2rem;
@@ -68,9 +133,15 @@ header {
     border: 2px solid var(--color-primary);
     border-radius: 6px;
     box-sizing: border-box;
+    transition: border-color 0.3s ease;
 }
 
-/* --- Zeitleisten-Container --- */
+#search-input:focus {
+    outline: none;
+    border-color: var(--color-accent-dark);
+}
+
+/* --- Timeline Container --- */
 .timeline {
   flex: 1;
   padding: 1rem;
@@ -78,7 +149,7 @@ header {
   position: relative;
 }
 
-/* Jahr-Gruppierung (Aufklappbar) */
+/* --- Year Grouping (Collapsible) --- */
 .year-group {
     margin-bottom: 2rem;
     border-bottom: 2px solid rgba(227, 6, 19, 0.3);
@@ -88,22 +159,26 @@ header {
     cursor: pointer;
     background-color: var(--color-primary);
     color: var(--color-secondary);
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1rem; /* Increased padding */
     margin-left: -1.5rem; 
     margin-bottom: 1rem;
     position: sticky; 
     top: 0;
     z-index: 20;
     border-radius: 4px;
-    font-size: 1.5rem;
+    font-size: 1.6rem; /* Slightly larger font */
     font-weight: bold;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Add shadow */
 }
 
-.year-title:hover {
+.year-title:hover, .year-title:focus {
     background-color: var(--color-accent-dark);
+    outline: 2px solid var(--color-secondary); /* Accessibility focus */
+    outline-offset: 2px;
 }
 
 .year-title::before {
@@ -117,21 +192,27 @@ header {
 }
 
 .year-content {
-    transition: max-height 0.5s ease-in-out; 
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out; 
+    overflow: hidden;
+    opacity: 1;
 }
 
 .year-content.closed {
     max-height: 0;
-    overflow: hidden;
+    opacity: 0;
 }
 
-/* Event Styling */
+/* --- Event Styling --- */
 .event {
   position: relative;
   padding: 1rem 1rem 1rem 2rem;
   margin-bottom: 1.5rem;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.event:hover {
+    transform: translateX(5px); /* Slight hover effect */
 }
 
 .event::before {
@@ -145,6 +226,7 @@ header {
   left: -12px;
   top: 15px;
   z-index: 10;
+  box-shadow: 0 0 0 2px var(--color-primary); /* Outline for better visibility */
 }
 
 .event-content {
@@ -173,7 +255,7 @@ header {
     color: var(--color-text-light);
 }
 
-.event-content h3 { margin-top: 0; margin-bottom: 0.5rem; }
+.event-content h3 { margin-top: 0; margin-bottom: 0.5rem; font-size: 1.3rem; }
 .event-content p { margin: 0; }
 
 /* NEUE DETAILS-ANZEIGE DIREKT IM EVENT */
@@ -183,16 +265,17 @@ header {
     border-radius: 4px;
     background-color: rgba(227, 6, 19, 0.1);
     border-left: 5px solid var(--color-primary);
-    display: none; 
+    display: block; /* Always block, control visibility with max-height/opacity */
     overflow: hidden;
     color: var(--color-text);
     max-height: 0;
-    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+    opacity: 0;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 .event-details-box.open {
-    display: block; 
-    max-height: 500px;
+    max-height: 500px; /* Sufficiently large to show content */
+    opacity: 1;
     padding: 1rem;
 }
 
@@ -230,78 +313,93 @@ header {
   max-width: 800px;
   margin: 2rem auto;
   padding: 1rem;
-  background: #fff;
+  background: var(--color-secondary);
   border-radius: 6px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 #reportForm h3 { color: var(--color-primary); margin-top: 0; }
-#reportForm input, #reportForm textarea, #reportForm button {
-  width: 100%;
-  padding: 0.5rem;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  box-sizing: border-box; 
-}
-#reportForm button {
-  background-color: var(--color-primary);
-  color: var(--color-secondary);
-  border: none;
-  cursor: pointer;
-  padding: 0.75rem;
-  font-weight: bold;
-}
-#reportForm button:hover { background-color: var(--color-accent-dark); }
-label { display:block; margin-bottom:0.5rem; }
+#reportForm p { margin-bottom: 1rem; } /* Added margin for paragraphs */
+#reportForm a { color: var(--color-primary); font-weight: bold; }
 
-/* Contribution Hint Box Styling */
-.contribution-hint {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background-color: var(--color-primary);
-  color: var(--color-secondary);
-  padding: 10px 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  z-index: 100;
-  text-align: center;
-  font-size: 0.9em;
+/* --- Footer --- */
+footer {
+    margin-top: 4rem !important; /* More space above footer */
+    padding: 30px 20px !important; /* More padding */
+    background-color: #e9e9e9 !important; /* Slightly darker background */
+    border-top: 1px solid var(--color-border-light);
 }
 
-.contribution-hint p {
-  margin: 0 0 5px 0;
-  font-weight: bold;
+footer p {
+    margin-bottom: 0.5rem;
 }
 
-.contribution-hint a {
-  color: var(--color-secondary);
-  text-decoration: underline;
-  font-weight: bold;
+footer a {
+    color: var(--color-primary);
+    font-weight: normal;
 }
 
-.contribution-hint a:hover {
-  color: #f0f0f0;
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  header {
+    padding: 1rem 1rem 1rem 1rem; /* Reduce padding on smaller screens */
+    min-height: auto;
+  }
+
+  .logo-placeholder {
+    position: static; /* Make it flow with content */
+    margin: 0 auto 1rem auto; /* Center it */
+    width: 80px;
+    height: 80px;
+    font-size: 0.7em;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+
+  .contribution-hint {
+    position: static; /* Make it flow with content */
+    margin: 1rem auto; /* Center it */
+    width: calc(100% - 40px); /* Full width with padding */
+    max-width: 400px;
+  }
+
+  .container {
+    flex-direction: column;
+    padding: 0 0.5rem;
+  }
+
+  .timeline {
+    border-left: none; /* Remove border on small screens */
+    padding: 0.5rem;
+  }
+
+  .year-title {
+    margin-left: 0; /* Align year title */
+    font-size: 1.4rem;
+  }
+
+  .event::before {
+    left: 10px; /* Adjust event dot position */
+  }
 }
 
-/* FC-Logo Placeholder Styling */
-.logo-placeholder {
-  position: absolute; /* Position relative to the header */
-  top: 20px;
-  left: 20px;
-  width: 100px; /* Adjust as needed */
-  height: 100px; /* Adjust as needed */
-  background-color: var(--color-secondary); /* White background */
-  border: 2px solid var(--color-primary); /* FC Red border */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  color: var(--color-primary);
-  z-index: 100;
-  border-radius: 8px;
-  text-align: center;
-  font-size: 0.8em;
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+  header p {
+    font-size: 0.9rem;
+  }
+  .year-title {
+    font-size: 1.2rem;
+  }
+  .event-content h3 {
+    font-size: 1.1rem;
+  }
 }
