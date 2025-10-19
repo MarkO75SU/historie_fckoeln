@@ -154,9 +154,13 @@ function toggleDetails(detailsBox) {
  * Initialisiert die Event-Listener
  */
 function initEventListeners() {
-    // Suchfunktion
+    // Suchfunktion (mit Debounce)
+    let searchTimeout;
     searchInput.addEventListener('input', (e) => {
-        renderTimeline(e.target.value);
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            renderTimeline(e.target.value);
+        }, 300); // 300ms delay
     });
     
     // Report-Formular
