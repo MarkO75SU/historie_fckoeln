@@ -114,8 +114,6 @@ function renderTimeline(filterTerm = '') {
         contentDiv.appendChild(detailsBox);
         eventDiv.appendChild(contentDiv);
         yearContent.appendChild(eventDiv);
-
-        eventDiv.addEventListener('click', () => toggleDetails(detailsBox));
     });
 
     yearGroupDiv.appendChild(yearContent);
@@ -163,6 +161,17 @@ function initEventListeners() {
         }, 300); // 300ms delay
     });
     
+    // Event Delegation für Event-Details
+    timelineElement.addEventListener('click', (e) => {
+        const eventDiv = e.target.closest('.event');
+        if (eventDiv) {
+            const detailsBox = eventDiv.querySelector('.event-details-box');
+            if (detailsBox) {
+                toggleDetails(detailsBox);
+            }
+        }
+    });
+
     // Report-Formular
     reportForm.addEventListener('submit', (e) => {
         e.preventDefault();
