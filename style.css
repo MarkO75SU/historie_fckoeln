@@ -94,6 +94,7 @@ header p {
   z-index: 1000; /* Higher z-index to ensure visibility */
   text-align: center;
   font-size: 0.9em;
+  border: 2px solid var(--color-secondary); /* White border added */
 }
 
 .contribution-hint p {
