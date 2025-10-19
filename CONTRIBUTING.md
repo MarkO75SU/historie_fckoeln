@@ -89,4 +89,4 @@ Die historischen Ereignisdaten werden in `events.json` gespeichert.
 
 ## Verhaltenskodex
 
-Please beachte, dass dieses Projekt mit einem [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) veröffentlicht wird. Durch die Teilnahme an diesem Projekt erklärst du dich mit dessen Bedingungen einverstanden.
+Bitte beachte, dass dieses Projekt mit einem [Verhaltenskodex](CODE_OF_CONDUCT.md) veröffentlicht wird. Durch die Teilnahme an diesem Projekt erklärst du dich mit dessen Bedingungen einverstanden.
