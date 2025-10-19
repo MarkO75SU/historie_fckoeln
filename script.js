@@ -1,3 +1,4 @@
+/* MIT License - Copyright (c) 2025 Your Name or Organization - See LICENSE for details. */
 /**
  * Hilfsfunktion zum Konvertieren von DD.MM.YYYY zu YYYY-MM-DD für Sortierung
  */
