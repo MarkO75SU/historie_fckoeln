@@ -1,0 +1,231 @@
+:root {
+  --color-primary: #E30613; /* FC Köln Rot */
+  --color-secondary: #FFFFFF; /* FC Köln Weiß */
+  --color-accent-dark: #9B1B30;
+  --color-text: #333333;
+  --color-text-light: #FFFFFF;
+  --color-background: #F9F9F9;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--color-background);
+  margin: 0;
+  color: var(--color-text);
+}
+
+header {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  text-align: center;
+  padding: 2rem;
+}
+
+.container {
+  display: flex;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* --- Such- und Filterbereich --- */
+.controls {
+    max-width: 900px;
+    margin: 0 auto 2rem;
+    padding: 0 1rem;
+}
+
+#search-input {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 2px solid var(--color-primary);
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+/* --- Zeitleisten-Container --- */
+.timeline {
+  flex: 1;
+  padding: 1rem;
+  border-left: 4px solid var(--color-primary);
+  position: relative;
+}
+
+/* Jahr-Gruppierung (Aufklappbar) */
+.year-group {
+    margin-bottom: 2rem;
+    border-bottom: 2px solid rgba(227, 6, 19, 0.3);
+}
+
+.year-title {
+    cursor: pointer;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    padding: 0.5rem 1rem;
+    margin-left: -1.5rem; 
+    margin-bottom: 1rem;
+    position: sticky; 
+    top: 0;
+    z-index: 20;
+    border-radius: 4px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.year-title:hover {
+    background-color: var(--color-accent-dark);
+}
+
+.year-title::before {
+    content: '▼'; /* Standard: Offen-Symbol */
+    margin-right: 0.5rem;
+    transition: transform 0.3s;
+}
+
+.year-title.closed::before {
+    content: '▶'; /* Geschlossen-Symbol */
+}
+
+.year-content {
+    transition: max-height 0.5s ease-in-out; 
+}
+
+.year-content.closed {
+    max-height: 0;
+    overflow: hidden;
+}
+
+/* Event Styling */
+.event {
+  position: relative;
+  padding: 1rem 1rem 1rem 2rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.event::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: var(--color-primary);
+  border: 4px solid var(--color-secondary);
+  border-radius: 50%;
+  left: -12px;
+  top: 15px;
+  z-index: 10;
+}
+
+.event-content {
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* WEISSES Event */
+.event-white .event-content {
+  background-color: var(--color-secondary);
+  color: var(--color-text);
+  border: 2px solid var(--color-primary);
+  border-left: 6px solid var(--color-primary);
+}
+
+/* ROTES Event */
+.event-red .event-content {
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  border: 2px solid var(--color-secondary);
+  border-left: 6px solid var(--color-secondary);
+}
+
+.event-red .event-content h3, .event-red .event-content p, .event-red .event-content strong {
+    color: var(--color-text-light);
+}
+
+.event-content h3 { margin-top: 0; margin-bottom: 0.5rem; }
+.event-content p { margin: 0; }
+
+/* NEUE DETAILS-ANZEIGE DIREKT IM EVENT */
+.event-details-box {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 4px;
+    background-color: rgba(227, 6, 19, 0.1);
+    border-left: 5px solid var(--color-primary);
+    display: none; 
+    overflow: hidden;
+    color: var(--color-text);
+    max-height: 0;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+}
+
+.event-details-box.open {
+    display: block; 
+    max-height: 500px;
+    padding: 1rem;
+}
+
+.event-details-box h4 {
+    color: var(--color-primary);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+/* Styling für Tabellenplatz */
+.table-rank {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--color-primary);
+}
+.event-red .table-rank {
+    color: var(--color-secondary);
+}
+
+/* Event Type Styling */
+.event[data-type="erfolg"]::before {
+    background-color: gold; 
+    border: 4px solid var(--color-primary);
+}
+.event[data-type="skandal"]::before {
+    background-color: black; 
+    border: 4px solid var(--color-primary);
+}
+.event[data-type="info"]::before {
+    background-color: #E30613;
+}
+
+/* --- Report Form --- */
+#reportForm {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+#reportForm h3 { color: var(--color-primary); margin-top: 0; }
+#reportForm input, #reportForm textarea, #reportForm button {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-sizing: border-box; 
+}
+#reportForm button {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  border: none;
+  cursor: pointer;
+  padding: 0.75rem;
+  font-weight: bold;
+}
+#reportForm button:hover { background-color: var(--color-accent-dark); }
+label { display:block; margin-bottom:0.5rem; }

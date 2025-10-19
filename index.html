@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1. FC Köln Zeitleiste (Vollständige Chronik)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>1. FC Köln Zeitleiste</h1>
+  <p>Die komplette Chronik: Saisonabschlüsse, Legenden und Meilensteine (1948 - 2024)</p>
+</header>
+
+<div class="controls">
+    <input type="text" id="search-input" placeholder="Nach Datum, Titel, Platzierung, Spieler oder Trainer suchen...">
+</div>
+
+<div class="container">
+  <div class="timeline" id="timeline"></div>
+</div>
+
+<form id="reportForm">
+  <h3>Fehlendes Ereignis melden</h3>
+  <input type="text" id="reportYear" placeholder="Datum (z.B. 13.02.1948)" required>
+  <input type="text" id="reportTitle" placeholder="Titel" required>
+  <textarea id="reportDescription" placeholder="Beschreibung" required></textarea>
+  
+  <label for="reportFile">Datei hochladen (optional)</label>
+  <input type="file" id="reportFile" accept=".jpg,.png,.pdf,.jpeg,.txt,.doc,.docx">
+  
+  <label>
+    <input type="checkbox" id="reportRights" required>
+    Ich bestätige, dass die Datei frei von Rechten Dritter ist und unentgeltlich zur Verfügung gestellt wird.
+  </label>
+  
+  <button type="submit">Melden</button>
+  <p id="reportMessage" style="color:green;"></p>
+</form>
+
+<script src="script.js"></script>
+</body>
+</html>
