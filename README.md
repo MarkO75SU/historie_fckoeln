@@ -76,8 +76,7 @@ Um dieses Projekt lokal auszuführen, benötigst du einen lokalen Webserver, da 
 Wir freuen uns über Beiträge aus der Community! Bitte lies unsere Datei [CONTRIBUTING.md](CONTRIBUTING.md) für detaillierte Richtlinien, wie du dich beteiligen kannst.
 
 ## Lizenz
-
-[Gib hier deine Lizenz an, z.B. MIT, Apache 2.0, etc.]
+Dieses Projekt ist unter der MIT-Lizenz lizenziert. Die vollständige Lizenz ist in der Datei [LICENSE](LICENSE) auf Deutsch verfügbar.
 
 ## Kontakt
 
